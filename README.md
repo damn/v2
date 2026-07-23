@@ -11,7 +11,7 @@ Examples assume `(require '[com.github.damn.v2 :as v2])`.
 (require '[com.github.damn.v2 :as v2])
 ```
 
-> This file is generated from API docstrings. Run `lein gen-readme` after editing them.
+> Generated from API docstrings. Run `lein gen-readme` after editing them.
 
 ## Install
 
@@ -25,9 +25,10 @@ Lookup: https://jitpack.io/#damn/v2
 
 ## API
 
-Examples in each docstring are locked by the unit tests.
+Click a name to expand docs and examples (covered by unit tests).
 
-### `add`
+<details>
+<summary><code>add</code></summary>
 
 **Arglists:** `[v1 v2]`
 
@@ -38,9 +39,10 @@ Component-wise sum of two vectors.
 ;; => [4 6]
 ```
 
-![add](doc/images/add.svg)
+</details>
 
-### `move`
+<details>
+<summary><code>move</code></summary>
 
 **Arglists:** `[position {:keys [direction speed delta-time]}]`
 
@@ -51,7 +53,10 @@ Translate `position` along a unit (or any) `direction` by `speed * delta-time`.
 ;; => [5.0 0.0]
 ```
 
-### `scale`
+</details>
+
+<details>
+<summary><code>scale</code></summary>
 
 **Arglists:** `[[x y] scalar]`
 
@@ -62,7 +67,10 @@ Multiply both components by `scalar`.
 ;; => [1.0 2.0]
 ```
 
-### `dot`
+</details>
+
+<details>
+<summary><code>dot</code></summary>
 
 **Arglists:** `[[this-x this-y] [x y]]`
 
@@ -74,7 +82,10 @@ Dot (scalar) product. `0` when perpendicular, positive when same-ish direction.
 (v2/dot [2 3] [4 5])  ;; => 23
 ```
 
-### `crs`
+</details>
+
+<details>
+<summary><code>crs</code></summary>
 
 **Arglists:** `[[this-x this-y] [x y]]`
 
@@ -86,7 +97,10 @@ counter-clockwise from `v1`.
 (v2/crs [1 0] [1 0])  ;; => 0
 ```
 
-### `length`
+</details>
+
+<details>
+<summary><code>length</code></summary>
 
 **Arglists:** `[[x y]]`
 
@@ -97,7 +111,10 @@ Euclidean length (magnitude).
 (v2/length [0 0])  ;; => 0.0
 ```
 
-### `normalise`
+</details>
+
+<details>
+<summary><code>normalise</code></summary>
 
 **Arglists:** `[[x y :as v]]`
 
@@ -108,7 +125,10 @@ Unit vector in the same direction. Zero vector stays `[0 0]`.
 (v2/normalise [0 0])  ;; => [0 0]
 ```
 
-### `normal-vectors`
+</details>
+
+<details>
+<summary><code>normal-vectors</code></summary>
 
 **Arglists:** `[[x y]]`
 
@@ -120,9 +140,10 @@ Not normalised; same length as `v`.
 ;; => [[0.0 1] [0 -1.0]]
 ```
 
-![normal-vectors](doc/images/normal-vectors.svg)
+</details>
 
-### `direction`
+<details>
+<summary><code>direction</code></summary>
 
 **Arglists:** `[[sx sy] [tx ty]]`
 
@@ -133,7 +154,10 @@ Unit vector from point `from` toward point `to`. Equal points → `[0.0 0.0]`.
 (v2/direction [1 1] [1 1])  ;; => [0.0 0.0]
 ```
 
-### `distance`
+</details>
+
+<details>
+<summary><code>distance</code></summary>
 
 **Arglists:** `[[x1 y1] [x2 y2]]`
 
@@ -143,7 +167,10 @@ Euclidean distance between two points.
 (v2/distance [0 0] [3 4])  ;; => 5.0
 ```
 
-### `angle-deg`
+</details>
+
+<details>
+<summary><code>angle-deg</code></summary>
 
 **Arglists:** `[this reference]`
 
@@ -154,7 +181,10 @@ Angle in degrees from `reference` to `this`, counter-clockwise, in `[0, 360)`.
 (v2/angle-deg [0 1] [0 1])  ;; => 0.0
 ```
 
-### `angle-from-vector`
+</details>
+
+<details>
+<summary><code>angle-from-vector</code></summary>
 
 **Arglists:** `[v]`
 
@@ -168,9 +198,10 @@ Heading of `v` in degrees where up `[0 1]` is `0`, counter-clockwise
 (v2/angle-from-vector [1 0])   ;; => 270.0
 ```
 
-![angle-from-vector](doc/images/angle-from-vector.svg)
+</details>
 
-### `double-ray-endpositions`
+<details>
+<summary><code>double-ray-endpositions</code></summary>
 
 **Arglists:** `[[start-x start-y] [target-x target-y] path-w]`
 
@@ -184,7 +215,8 @@ Returns `[start1 target1 start2 target2]`. `path-w` must be `< 0.98`.
 ;; => [[0.0 0.26] [10.0 0.26] [0.0 -0.26] [10.0 -0.26]]
 ```
 
-![double-ray-endpositions](doc/images/double-ray-endpositions.svg)
+</details>
+
 ## License
 
 MIT

@@ -38,37 +38,31 @@
        (map pr-str)
        (str/join " ")))
 
-(defn- image-for [sym-name]
-  (let [rel (str "doc/images/" sym-name ".svg")
-        f (io/file root rel)]
-    (when (.isFile f)
-      (str "![" sym-name "](" rel ")"))))
-
 (defn- public-vars []
   (->> (ns-publics 'com.github.damn.v2)
        vals
        (sort-by (comp :line meta))))
 
+(defn- var-details [v]
+  (let [m (meta v)
+        name (name (:name m))
+        doc (or (md-doc (:doc m)) "_No docstring._")]
+    (str "<details>\n"
+         "<summary><code>" name "</code></summary>\n\n"
+         "**Arglists:** `" (arglists-str v) "`\n\n"
+         doc
+         "\n\n"
+         "</details>\n")))
+
 (defn- render []
-  (let [ns-doc (md-doc (:doc (meta (find-ns 'com.github.damn.v2))))
-        sections
-        (for [v (public-vars)
-              :let [m (meta v)
-                    name (name (:name m))
-                    doc (md-doc (:doc m))
-                    img (image-for name)]]
-          (str "### `" name "`\n\n"
-               "**Arglists:** `" (arglists-str v) "`\n\n"
-               (or doc "_No docstring._")
-               (when img (str "\n\n" img))
-               "\n"))]
+  (let [ns-doc (md-doc (:doc (meta (find-ns 'com.github.damn.v2))))]
     (str "# v2\n\n"
          (or ns-doc "2D vector math on `[x y]` pairs.")
          "\n\n"
          "```clojure\n"
          "(require '[com.github.damn.v2 :as v2])\n"
          "```\n\n"
-         "> This file is generated from API docstrings. Run `lein gen-readme` after editing them.\n\n"
+         "> Generated from API docstrings. Run `lein gen-readme` after editing them.\n\n"
          "## Install\n\n"
          "```clojure\n"
          ";; project.clj\n"
@@ -77,9 +71,9 @@
          "```\n\n"
          "Lookup: https://jitpack.io/#damn/v2\n\n"
          "## API\n\n"
-         "Examples in each docstring are locked by the unit tests.\n\n"
-         (str/join "\n" sections)
-         "## License\n\n"
+         "Click a name to expand docs and examples (covered by unit tests).\n\n"
+         (str/join "\n" (map var-details (public-vars)))
+         "\n## License\n\n"
          "MIT\n")))
 
 (defn -main [& _]
