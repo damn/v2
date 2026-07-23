@@ -4,4 +4,6 @@
   :license {:name "MIT"
             :url "https://opensource.org/licenses/MIT"}
   :dependencies [[org.clojure/clojure "1.12.0"]]
-  :profiles {:dev {:dependencies [[org.clojure/test.check "1.1.1"]]}})
+  :profiles {:dev {:source-paths ["dev"]
+                   :dependencies [[org.clojure/test.check "1.1.1"]]}}
+  :aliases {"gen-readme" ["run" "-m" "generate-readme"]})

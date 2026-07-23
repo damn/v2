@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="200" viewBox="0 0 360 200">
+  <rect width="360" height="200" fill="#fafafa"/>
+  <text x="12" y="22" font-family="system-ui,sans-serif" font-size="14" fill="#222">normal-vectors [1 0]</text>
+  <line x1="180" y1="170" x2="180" y2="30" stroke="#ddd"/>
+  <line x1="40" y1="110" x2="320" y2="110" stroke="#ddd"/>
+  <!-- v -->
+  <line x1="180" y1="110" x2="280" y2="110" stroke="#2563eb" stroke-width="3"/>
+  <polygon points="280,110 268,104 268,116" fill="#2563eb"/>
+  <text x="250" y="100" font-family="system-ui,sans-serif" font-size="12" fill="#2563eb">v [1 0]</text>
+  <!-- left normal [0 1] up -->
+  <line x1="180" y1="110" x2="180" y2="40" stroke="#16a34a" stroke-width="2.5"/>
+  <polygon points="180,40 174,52 186,52" fill="#16a34a"/>
+  <text x="190" y="55" font-family="system-ui,sans-serif" font-size="12" fill="#16a34a">left [0 1]</text>
+  <!-- right normal [0 -1] down -->
+  <line x1="180" y1="110" x2="180" y2="180" stroke="#dc2626" stroke-width="2.5"/>
+  <polygon points="180,180 174,168 186,168" fill="#dc2626"/>
+  <text x="190" y="175" font-family="system-ui,sans-serif" font-size="12" fill="#dc2626">right [0 -1]</text>
+</svg>
